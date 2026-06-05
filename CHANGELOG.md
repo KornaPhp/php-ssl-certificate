@@ -2,6 +2,20 @@
 
 All notable changes to `ssl-certificate` will be documented in this file
 
+## 2.7.0 - 2026-06-05
+
+### What's Changed
+
+* Update test case files & README.md  by @JoeHorn in https://github.com/spatie/ssl-certificate/pull/195
+* Update issue template by @AlexVanderbist in https://github.com/spatie/ssl-certificate/pull/198
+* Add getSubjectOrganization and modernise the tooling by @freekmurze in https://github.com/spatie/ssl-certificate/pull/199
+
+### New Contributors
+
+* @AlexVanderbist made their first contribution in https://github.com/spatie/ssl-certificate/pull/198
+
+**Full Changelog**: https://github.com/spatie/ssl-certificate/compare/2.6.10...2.7.0
+
 ## 2.6.10 - 2025-04-25
 
 ### What's Changed
