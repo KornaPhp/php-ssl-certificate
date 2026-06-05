@@ -11,10 +11,10 @@ class SslCertificate
 
     public static function download(): Downloader
     {
-        return new Downloader();
+        return new Downloader;
     }
 
-    public static function createForHostName(string $url, int $timeout = 30, bool $verifyCertificate = true): self | bool
+    public static function createForHostName(string $url, int $timeout = 30, bool $verifyCertificate = true): self|bool
     {
         return Downloader::downloadCertificateFromUrl($url, $timeout, $verifyCertificate);
     }
@@ -117,14 +117,19 @@ class SslCertificate
         return $this->rawCertificateFields['issuer']['O'] ?? '';
     }
 
+    public function getSubjectOrganization(): string
+    {
+        return $this->rawCertificateFields['subject']['O'] ?? '';
+    }
+
     public function getFingerprint(): string
     {
-        return $this->fingerprint ?? '';
+        return $this->fingerprint;
     }
 
     public function getFingerprintSha256(): string
     {
-        return $this->fingerprintSha256 ?? '';
+        return $this->fingerprintSha256;
     }
 
     public function getAdditionalDomains(): array
@@ -136,7 +141,7 @@ class SslCertificate
 
     public function getPublicKeyAlgorithm(): string
     {
-        return match($this->publicKeyDetail['type'] ?? -1) {
+        return match ($this->publicKeyDetail['type'] ?? -1) {
             OPENSSL_KEYTYPE_RSA => 'RSA',
             OPENSSL_KEYTYPE_DSA => 'DSA',
             OPENSSL_KEYTYPE_DH => 'DH',
@@ -162,7 +167,7 @@ class SslCertificate
 
     public function lifespanInDays(): int
     {
-        return (int)$this->validFromDate()->diffInDays($this->expirationDate(), false);
+        return (int) $this->validFromDate()->diffInDays($this->expirationDate(), false);
     }
 
     public function isExpired(): bool
@@ -177,7 +182,7 @@ class SslCertificate
         }
 
         if (! empty($url)) {
-            return $this->appliesToUrl($url ?? $this->getDomain());
+            return $this->appliesToUrl($url);
         }
 
         return true;
